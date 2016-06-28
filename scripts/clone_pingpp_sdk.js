@@ -15,6 +15,9 @@ module.exports = function(ctx) {
   if (shell.test('-e', sdk_path)) { d.resolve(); }
   else {
     if (!shell.which('git')) d.reject('Can not request git');
+    if (platform == 'android') {
+      d.resolve();
+    }
 
     shell.echo(style.cyan.open + 'Cloning ping++ ' + platform + ' SDK, Please wait...' + style.cyan.close);
 
